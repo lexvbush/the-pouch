@@ -1,7 +1,190 @@
 <!DOCTYPE html>
-<html>
-<head><title>The Pouch</title></head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pouch</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --moss:#3D5E3A;--moss-l:#7A9E6E;--moss-p:#EBF2E6;
+  --bay:#3A8C8A;--bay-l:#6BB8B5;--bay-p:#E0F2F1;
+  --terra:#C4673A;--terra-p:#FAF0E8;
+  --lav:#7B7BAF;--lav-p:#EEEEF8;
+  --gold:#E8C97A;--gold-p:#FBF6E8;
+  --stone:#B8A882;--stone-p:#F7F4ED;
+  --ink:#1C2421;--ink-s:#3A4A44;
+  --cream:#FDFCF8;--warm:#F9F6EE;
+  --border:#E0DAC8;
+}
+html,body{height:100%;font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);font-weight:300;}
+
+/* HERO */
+.hero{
+  background:var(--moss);
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:3rem 2rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:rgba(58,140,138,.12);
+  top:-100px;right:-150px;pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;
+  width:400px;height:400px;border-radius:50%;
+  background:rgba(122,158,110,.1);
+  bottom:-80px;left:-100px;pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1;max-width:600px;}
+.hero-eye{font-size:9px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--bay-l);margin-bottom:1.5rem;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,9vw,6rem);font-weight:400;color:var(--cream);line-height:.95;margin-bottom:.4rem;}
+.hero-title em{font-style:italic;color:var(--bay-l);}
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:rgba(253,252,248,.45);margin-bottom:.75rem;}
+.hero-mission{font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:var(--bay-l);margin-bottom:3rem;line-height:1.4;}
+.hero-divider{width:32px;height:1px;background:rgba(107,184,181,.4);margin:0 auto 2.5rem;}
+
+/* SCROLL CTA */
+.scroll-hint{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(253,252,248,.25);margin-top:3rem;}
+
+/* PAGES SECTION */
+.pages{padding:4rem 2rem 5rem;max-width:860px;margin:0 auto;}
+.pages-eye{font-size:9px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:.5rem;text-align:center;}
+.pages-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:400;color:var(--ink);text-align:center;margin-bottom:.75rem;}
+.pages-title em{font-style:italic;color:var(--moss);}
+.pages-sub{font-size:.88rem;color:var(--ink-s);text-align:center;max-width:480px;margin:0 auto 3rem;line-height:1.8;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;}
+
+.page-card{
+  background:var(--warm);
+  border:0.5px solid var(--border);
+  border-radius:16px;
+  padding:1.5rem 1.4rem;
+  text-decoration:none;
+  color:inherit;
+  display:flex;flex-direction:column;gap:.6rem;
+  transition:transform .18s, box-shadow .18s, border-color .18s;
+  position:relative;overflow:hidden;
+}
+.page-card:hover{transform:translateY(-3px);border-color:var(--moss-l);}
+.page-card::before{
+  content:'';position:absolute;inset:0;border-radius:16px;
+  opacity:0;transition:opacity .18s;
+  background:linear-gradient(135deg,rgba(61,94,58,.04) 0%,transparent 60%);
+}
+.page-card:hover::before{opacity:1;}
+
+.card-accent{width:28px;height:3px;border-radius:2px;margin-bottom:.3rem;}
+.card-num{font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);}
+.card-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--ink);line-height:1.2;}
+.card-desc{font-size:.78rem;color:var(--ink-s);line-height:1.65;flex:1;}
+.card-link{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:.35rem;margin-top:.25rem;}
+.card-arrow{font-size:.9rem;}
+
+/* COMING SOON CARD */
+.page-card.soon{opacity:.5;pointer-events:none;cursor:default;}
+.page-card.soon:hover{transform:none;}
+.soon-badge{font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;background:var(--border);color:var(--stone);padding:3px 8px;border-radius:8px;display:inline-block;margin-top:.25rem;}
+
+/* FOOTER */
+footer{background:var(--moss);padding:2.5rem 2rem;text-align:center;}
+.f-title{font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:var(--cream);margin-bottom:.35rem;}
+.f-sub{font-size:.75rem;color:rgba(253,252,248,.35);letter-spacing:.1em;}
+
+@media(max-width:500px){
+  .grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
 <body>
-<h1>The Pouch</h1>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eye">Internal · Confidential · April 2026</div>
+    <div class="hero-title">The <em>Pouch</em></div>
+    <div class="hero-sub">a woman's essentials, finally organized</div>
+    <div class="hero-divider"></div>
+    <div class="hero-mission">"Carry your woman with you."</div>
+    <div class="scroll-hint">Scroll to explore documents</div>
+  </div>
+</div>
+
+<div class="pages">
+  <div class="pages-eye">Documents</div>
+  <div class="pages-title">Everything in <em>one place</em></div>
+  <div class="pages-sub">All brand documents, briefs, and guidelines live here. Each link opens a fully formatted page you can share directly.</div>
+
+  <div class="grid">
+
+    <!-- BUSINESS BRIEF -->
+    <a class="page-card" href="the_pouch_complete_brief.html">
+      <div class="card-accent" style="background:var(--moss);"></div>
+      <div class="card-num">01</div>
+      <div class="card-title">Business Brief</div>
+      <div class="card-desc">The full brand document — purpose, product design, brand identity, social campaigns, web direction, sales method, pricing, production, and humanitarian mission.</div>
+      <div class="card-link" style="color:var(--moss);">Open brief <span class="card-arrow">→</span></div>
+    </a>
+
+    <!-- BRAND GUIDELINES — coming soon -->
+    <div class="page-card soon">
+      <div class="card-accent" style="background:var(--bay);"></div>
+      <div class="card-num">02</div>
+      <div class="card-title">Brand Guidelines</div>
+      <div class="card-desc">Color palette, typography, logo usage, photography direction, voice and tone. The complete brand system for partners and collaborators.</div>
+      <div class="soon-badge">Coming soon</div>
+    </div>
+
+    <!-- PRODUCT SPEC — coming soon -->
+    <div class="page-card soon">
+      <div class="card-accent" style="background:var(--terra);"></div>
+      <div class="card-num">03</div>
+      <div class="card-title">Product Spec</div>
+      <div class="card-desc">Technical manufacturing brief — interior architecture, materials, dimensions, hardware specs, and quality standards for production partners.</div>
+      <div class="soon-badge">Coming soon</div>
+    </div>
+
+    <!-- CAMPAIGN BRIEF — coming soon -->
+    <div class="page-card soon">
+      <div class="card-accent" style="background:var(--lav);"></div>
+      <div class="card-num">04</div>
+      <div class="card-title">Campaign Brief</div>
+      <div class="card-desc">Social media campaigns, content strategy, sample posts, and photography direction for Instagram, TikTok, and Pinterest.</div>
+      <div class="soon-badge">Coming soon</div>
+    </div>
+
+    <!-- WHOLESALE DECK — coming soon -->
+    <div class="page-card soon">
+      <div class="card-accent" style="background:var(--gold);"></div>
+      <div class="card-num">05</div>
+      <div class="card-title">Wholesale Deck</div>
+      <div class="card-desc">Partner-facing document — pricing, minimums, brand alignment criteria, and onboarding details for wholesale and retail partners.</div>
+      <div class="soon-badge">Coming soon</div>
+    </div>
+
+    <!-- PITCH DECK — coming soon -->
+    <div class="page-card soon">
+      <div class="card-accent" style="background:var(--stone);"></div>
+      <div class="card-num">06</div>
+      <div class="card-title">Pitch Deck</div>
+      <div class="card-desc">Investor and partner-facing overview — market opportunity, mission, product, traction, and roadmap.</div>
+      <div class="soon-badge">Coming soon</div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="f-title">The Pouch</div>
+  <div class="f-sub">thepouch.co · hello@thepouch.co · April 2026</div>
+</footer>
+
 </body>
 </html>
