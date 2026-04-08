@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designer Brief — The Pouch</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --moss:#3D5E3A;--moss-l:#7A9E6E;--moss-p:#EBF2E6;
+  --bay:#3A8C8A;--bay-l:#6BB8B5;--bay-p:#E0F2F1;
+  --amber:#D4952A;--amber-p:#FBF4E3;
+  --lav:#7B7BAF;--lav-p:#EEEEF8;
+  --stone:#B8A882;--stone-p:#F7F4ED;
+  --ink:#1C2421;--ink-s:#3A4A44;
+  --cream:#FDFCF8;--warm:#F9F6EE;
+  --border:#E0DAC8;
+}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);font-weight:300;line-height:1.7;font-size:15px;}
+.wrap{max-width:820px;margin:0 auto;padding-bottom:0;}
+
+/* COVER */
+.cover{background:var(--ink);padding:3.5rem 2.5rem;position:relative;overflow:hidden;}
+.cover::after{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(58,140,138,.08);bottom:-80px;right:-60px;pointer-events:none;}
+.cover-eye{font-size:9px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--bay-l);margin-bottom:1.25rem;}
+.cover-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:.4rem;}
+.cover-title em{font-style:italic;color:var(--bay-l);}
+.cover-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:rgba(253,252,248,.4);margin-bottom:2rem;}
+.cover-meta{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.meta-pill{font-size:.72rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;border:0.5px solid rgba(107,184,181,.35);color:rgba(107,184,181,.8);padding:5px 14px;border-radius:20px;}
+
+/* NAV */
+.nav{background:var(--warm);border-bottom:1px solid var(--border);padding:.55rem 1.5rem;display:flex;gap:.15rem;flex-wrap:wrap;align-items:center;position:sticky;top:0;z-index:100;}
+.nav-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-right:.4rem;}
+.nav-a{font-size:10px;color:var(--ink-s);text-decoration:none;padding:3px 8px;border-radius:8px;cursor:pointer;white-space:nowrap;}
+.nav-a:hover{background:var(--border);}
+
+/* SECTIONS */
+.sec{padding:2.75rem 2.5rem 1.75rem;}
+.sec+.sec{border-top:1px solid var(--border);}
+.eye{font-size:9px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--amber);margin-bottom:.45rem;}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3vw,1.85rem);font-weight:400;color:var(--ink);line-height:1.15;margin-bottom:1rem;}
+.stitle em{font-style:italic;color:var(--moss);}
+.sbody{font-size:.88rem;line-height:1.9;color:var(--ink-s);max-width:640px;}
+.sbody+.sbody{margin-top:.8rem;}
+
+.h2{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--moss);margin:1.4rem 0 .5rem;}
+.blist{list-style:none;padding:0;}
+.blist li{font-size:.86rem;color:var(--ink-s);line-height:1.75;padding-left:1.1rem;position:relative;margin-bottom:.1rem;}
+.blist li::before{content:'—';position:absolute;left:0;color:var(--stone);}
+
+.callout{background:var(--moss-p);border-left:3px solid var(--moss);border-radius:0 8px 8px 0;padding:.9rem 1.2rem;margin:1.25rem 0;font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--moss);line-height:1.5;}
+.callout.amber{background:var(--amber-p);border-left-color:var(--amber);color:var(--amber);}
+.callout.bay{background:var(--bay-p);border-left-color:var(--bay);color:var(--bay);}
+
+/* DELIVERABLES */
+.deliverables{display:flex;flex-direction:column;gap:.625rem;margin-top:1rem;}
+.del{background:var(--warm);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.1rem;display:flex;gap:1rem;align-items:flex-start;}
+.del-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:400;color:var(--border);line-height:1;flex-shrink:0;width:2rem;text-align:right;}
+.del-inner{flex:1;}
+.del-title{font-size:.85rem;font-weight:500;color:var(--ink);margin-bottom:.2rem;}
+.del-body{font-size:.8rem;color:var(--ink-s);line-height:1.65;}
+.del-tag{display:inline-block;font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border-radius:8px;padding:2px 8px;margin-top:.35rem;}
+
+/* TERMS TABLE */
+.terms{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.84rem;}
+.terms td{padding:.65rem .75rem;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.6;}
+.terms td:first-child{font-weight:500;color:var(--ink);width:38%;white-space:nowrap;}
+.terms td:last-child{color:var(--ink-s);}
+.terms tr:last-child td{border-bottom:none;}
+.terms tr:nth-child(odd) td{background:var(--warm);}
+
+/* MOOD WORDS */
+.mood{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;}
+.mood-word{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--moss);background:var(--moss-p);border:0.5px solid var(--moss-l);border-radius:20px;padding:4px 14px;}
+
+/* PALETTE REF */
+.palette{display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem;}
+.sw{display:flex;flex-direction:column;gap:4px;align-items:center;}
+.sw-c{width:48px;height:48px;border-radius:8px;}
+.sw-n{font-size:.6rem;color:var(--ink-s);text-align:center;line-height:1.3;max-width:52px;}
+.sw-h{font-size:.57rem;color:var(--stone);font-family:monospace;text-align:center;}
+
+/* IMPORTANT BOX */
+.important{background:var(--ink);border-radius:12px;padding:1.5rem 1.75rem;margin:1.5rem 0;}
+.imp-eye{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--bay-l);margin-bottom:.6rem;}
+.imp-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--cream);margin-bottom:.75rem;line-height:1.35;}
+.imp-list{list-style:none;padding:0;}
+.imp-list li{font-size:.83rem;color:rgba(253,252,248,.7);line-height:1.75;padding-left:1rem;position:relative;}
+.imp-list li::before{content:'→';position:absolute;left:0;color:var(--bay-l);}
+
+/* CLOSING */
+.closing{background:var(--moss);padding:3rem 2.5rem;text-align:center;}
+.cl-q{font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;color:var(--cream);margin-bottom:.5rem;line-height:1.3;}
+.cl-s{font-size:.75rem;color:rgba(253,252,248,.35);letter-spacing:.1em;}
+
+@media(max-width:540px){
+  .cover-meta{flex-direction:column;gap:.5rem;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eye">Designer Brief · Confidential · April 2026</div>
+  <div class="cover-title">Visual Identity &amp; Brand Design<br><em>Request for Quote</em></div>
+  <div class="cover-sub">a women's carry brand — full identity system needed</div>
+  <div class="cover-meta">
+    <span class="meta-pill">Timeline: 1–2 weeks</span>
+    <span class="meta-pill">Digital deliverables</span>
+    <span class="meta-pill">Remote collaboration</span>
+    <span class="meta-pill">Revision rounds included</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <span class="nav-lbl">sections</span>
+  <a class="nav-a" href="#s01">Overview</a>
+  <a class="nav-a" href="#s02">The Product</a>
+  <a class="nav-a" href="#s03">Brand World</a>
+  <a class="nav-a" href="#s04">Deliverables</a>
+  <a class="nav-a" href="#s05">What We Provide</a>
+  <a class="nav-a" href="#s06">Terms</a>
+  <a class="nav-a" href="#s07">How to Quote</a>
+</div>
+
+<!-- 01 OVERVIEW -->
+<div class="sec" id="s01">
+  <div class="eye">01 — Overview</div>
+  <div class="stitle">What we're building and <em>why we need you</em></div>
+  <div class="sbody">We are launching a new women's carry brand built around a single hero product — a small, soft, organized pocket pouch designed to hold a woman's everyday essentials. The brand has a strong strategic and written foundation. What we need now is a designer to bring it to life visually.</div>
+  <div class="sbody">The brand name is currently in development. You will be designing the identity system before the final name is locked — logo concepts will be done in placeholder form and finalized once the name is confirmed. This is standard and we will move quickly on naming once direction is established.</div>
+  <div class="callout amber">"We need a designer who can move fast, take direction, and collaborate openly — not someone who disappears and returns with one take-it-or-leave-it concept."</div>
+  <div class="sbody">This is a paid engagement. We are collecting quotes and will move forward with the designer whose work, communication style, and timeline best fits what we're building.</div>
+</div>
+
+<!-- 02 THE PRODUCT -->
+<div class="sec" id="s02">
+  <div class="eye">02 — The Product</div>
+  <div class="stitle">One product. <em>Every woman needs it.</em></div>
+  <div class="sbody">The product is a small, soft, shapeless exterior pouch made from micro-velvet. It is engineered for women — with a fully organized interior featuring dedicated zones for lipstick, chapstick, jewelry, business cards, AirPods, small keys, hair ties, and mints. It moves from purse to pocket to standalone carry. The mission is to create a more functional existence for women.</div>
+
+  <div class="h2">Product identity in one line</div>
+  <div class="callout bay">"Carry your woman with you."</div>
+
+  <div class="h2">Physical product details relevant to design</div>
+  <ul class="blist">
+    <li>Exterior: micro-velvet, soft and tactile — the material itself is the luxury signal</li>
+    <li>Two launch colorways, both monochrome: Deep Ink (near-black) and Stone at Dawn (warm off-white)</li>
+    <li>No zippers — closures are magnetic snap and elastic</li>
+    <li>Small brand mark blind-embossed on exterior center-bottom</li>
+    <li>Approximately 4.5" × 3.5" — pocket-sized, compresses flat when empty</li>
+    <li>Price range: $38–$62 retail — accessible luxury positioning</li>
+  </ul>
+</div>
+
+<!-- 03 BRAND WORLD -->
+<div class="sec" id="s03">
+  <div class="eye">03 — Brand World & Aesthetic Direction</div>
+  <div class="stitle">The visual world <em>already exists</em> — we need you to formalize it</div>
+  <div class="sbody">The brand's visual direction has been developed through a Pinterest board and written brand guidelines. The world is painterly, lush, and alive — Mediterranean coastlines, illustrated landscapes in the style of Studio Ghibli, Chinese ink-wash mountains, overgrown canal cities, tropical interiors. Warm, saturated, abundant. Not minimal, not corporate, not cold.</div>
+
+  <div class="h2">Six words that define the brand</div>
+  <div class="mood">
+    <span class="mood-word">Painterly</span>
+    <span class="mood-word">Abundant</span>
+    <span class="mood-word">Wandering</span>
+    <span class="mood-word">Contemplative</span>
+    <span class="mood-word">Handmade</span>
+    <span class="mood-word">Luminous</span>
+  </div>
+
+  <div class="h2">Existing color palette — for reference</div>
+  <div class="palette">
+    <div class="sw"><div class="sw-c" style="background:#3A8C8A;"></div><div class="sw-n">Tidal bay</div><div class="sw-h">#3A8C8A</div></div>
+    <div class="sw"><div class="sw-c" style="background:#3D5E3A;"></div><div class="sw-n">Forest canopy</div><div class="sw-h">#3D5E3A</div></div>
+    <div class="sw"><div class="sw-c" style="background:#7A9E6E;"></div><div class="sw-n">Tea field</div><div class="sw-h">#7A9E6E</div></div>
+    <div class="sw"><div class="sw-c" style="background:#D4952A;"></div><div class="sw-n">Amber</div><div class="sw-h">#D4952A</div></div>
+    <div class="sw"><div class="sw-c" style="background:#B8A882;"></div><div class="sw-n">Weathered stone</div><div class="sw-h">#B8A882</div></div>
+    <div class="sw"><div class="sw-c" style="background:#7B7BAF;"></div><div class="sw-n">Mountain mist</div><div class="sw-h">#7B7BAF</div></div>
+    <div class="sw"><div class="sw-c" style="background:#F7F4ED;border:0.5px solid #E0DAC8;"></div><div class="sw-n">Paper white</div><div class="sw-h">#F7F4ED</div></div>
+    <div class="sw"><div class="sw-c" style="background:#1C2421;"></div><div class="sw-n">Deep ink</div><div class="sw-h">#1C2421</div></div>
+  </div>
+  <div class="sbody" style="margin-top:1rem;">These colors are directional, not locked. The designer is encouraged to refine, expand, or evolve the palette as part of the identity work — with the understanding that vibrant green is the primary accent color and amber replaces any orange/terracotta usage.</div>
+
+  <div class="h2">Logo direction</div>
+  <div class="sbody">The logo mark concept is a swirl with an upper and lower half — reminiscent of the laws of nature. Ethereal, feminine, and powerful. Think nautilus, golden ratio, dual opposing forces. Fine-line illustrative quality. The wordmark pairs with this mark in an italic serif. The brand name is TBD — logo concepts should be done with a placeholder name or mark-only initially.</div>
+
+  <div class="h2">Typography direction</div>
+  <ul class="blist">
+    <li>Display / headline: an italic serif with elegance and weight — Playfair Display is the current placeholder</li>
+    <li>Body: a clean, modern light-weight sans — warm, never corporate</li>
+    <li>The combination should feel like an elevated editorial magazine, not a tech product</li>
+  </ul>
+
+  <div class="h2">Photography &amp; imagery tone</div>
+  <ul class="blist">
+    <li>The product lives in the world — on stone terraces, cobblestone alleys, beside bay windows, in botanical interiors</li>
+    <li>Natural light always. Golden hour preferred for the dark colorway. Open midday light for the pale colorway</li>
+    <li>Never: white seamless, generic flat-lay, stock imagery</li>
+    <li>Illustrated scenes are part of the brand identity — think Ghibli-esque moments featuring the product in the brand world. The designer may be asked to concept these or art-direct them separately</li>
+  </ul>
+</div>
+
+<!-- 04 DELIVERABLES -->
+<div class="sec" id="s04">
+  <div class="eye">04 — Deliverables</div>
+  <div class="stitle">What we need <em>designed and delivered</em></div>
+  <div class="sbody">All deliverables are digital. Files should be delivered in editable source format (Figma preferred, Adobe XD or Illustrator accepted) plus exported PNGs and SVGs at appropriate resolutions. Print-ready files are not required at this stage.</div>
+
+  <div class="deliverables" style="margin-top:1.25rem;">
+
+    <div class="del">
+      <div class="del-num">01</div>
+      <div class="del-inner">
+        <div class="del-title">Logo system</div>
+        <div class="del-body">Primary logo mark (the swirl concept) + wordmark combination. Secondary mark (sprig botanical seal for emboss use). Mark-only version. Wordmark-only version. All in black, white, and primary brand green. Usage guidelines for each variant.</div>
+        <span class="del-tag" style="background:var(--moss-p);color:var(--moss);border:0.5px solid var(--moss-l);">core deliverable</span>
+      </div>
+    </div>
+
+    <div class="del">
+      <div class="del-num">02</div>
+      <div class="del-inner">
+        <div class="del-title">Brand identity system</div>
+        <div class="del-body">Finalized color palette with hex codes and usage rules. Typography pairing with hierarchy (H1–H3, body, caption, label). Spacing and layout principles. Do/don't usage examples. Delivered as a brand guidelines document (Figma or PDF).</div>
+        <span class="del-tag" style="background:var(--moss-p);color:var(--moss);border:0.5px solid var(--moss-l);">core deliverable</span>
+      </div>
+    </div>
+
+    <div class="del">
+      <div class="del-num">03</div>
+      <div class="del-inner">
+        <div class="del-title">Packaging design concepts</div>
+        <div class="del-body">Botanical-illustrated tissue paper wrap (one scene, digital mockup). Hang tag (front and back). Insert card / postcard (front: illustrated scene, back: one-line copy). Glassine sleeve label. All as digital mockups — no print files required at this stage.</div>
+        <span class="del-tag" style="background:var(--bay-p);color:var(--bay);border:0.5px solid var(--bay-l);">priority deliverable</span>
+      </div>
+    </div>
+
+    <div class="del">
+      <div class="del-num">04</div>
+      <div class="del-inner">
+        <div class="del-title">Product photography mood board &amp; shot list</div>
+        <div class="del-body">A curated visual mood board (12–16 reference images) showing the exact aesthetic, lighting, surfaces, and settings for product photography. A written shot list covering hero shots, colorway-specific shots, lifestyle shots, and detail shots. This gives the photographer everything they need.</div>
+        <span class="del-tag" style="background:var(--bay-p);color:var(--bay);border:0.5px solid var(--bay-l);">priority deliverable</span>
+      </div>
+    </div>
+
+    <div class="del">
+      <div class="del-num">05</div>
+      <div class="del-inner">
+        <div class="del-title">Social media templates</div>
+        <div class="del-body">Instagram feed post template (1:1 and 4:5). Instagram Stories template. One TikTok cover / thumbnail template. Templates should be editable in Figma and follow the brand system. Not campaign-specific — these are the blank canvas brand templates.</div>
+        <span class="del-tag" style="background:var(--amber-p);color:var(--amber);border:0.5px solid #E8C07A;">standard deliverable</span>
+      </div>
+    </div>
+
+    <div class="del">
+      <div class="del-num">06</div>
+      <div class="del-inner">
+        <div class="del-title">Website visual direction</div>
+        <div class="del-body">Homepage design mockup (desktop + mobile). Product page design mockup (desktop + mobile). This is visual design only — not development. We will handle the Shopify build using the design files. Delivered in Figma with organized, named layers.</div>
+        <span class="del-tag" style="background:var(--amber-p);color:var(--amber);border:0.5px solid #E8C07A;">standard deliverable</span>
+      </div>
+    </div>
+
+    <div class="del">
+      <div class="del-num">07</div>
+      <div class="del-inner">
+        <div class="del-title">Product illustration / tech pack (clean final)</div>
+        <div class="del-body">A clean, final-quality technical illustration of the product — front, interior, and side views. Suitable for use in the business brief, wholesale deck, and production documents. Should clearly show all five interior compartments. Line art style preferred.</div>
+        <span class="del-tag" style="background:var(--stone-p);color:#6A5A3A;border:0.5px solid var(--stone);">bonus / optional</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 05 WHAT WE PROVIDE -->
+<div class="sec" id="s05">
+  <div class="eye">05 — What We Provide to the Designer</div>
+  <div class="stitle">You won't be starting <em>from scratch</em></div>
+  <div class="sbody">We have done significant brand strategy work already. The designer is walking into a well-defined brief, not an ambiguous ask. Here is what we will hand over at project start:</div>
+
+  <ul class="blist" style="margin-top:1rem;">
+    <li>Full written business brief (purpose, mission, product spec, brand voice, social strategy, pricing, production, humanitarian vision)</li>
+    <li>Pinterest board with 18+ curated visual references for the brand world</li>
+    <li>Logo direction sketch (three concept directions — dual swirl is preferred)</li>
+    <li>Existing color palette with hex codes and named colors</li>
+    <li>Typography direction (display + body pairing already identified)</li>
+    <li>Brand voice document with sample copy lines and do/don't examples</li>
+    <li>Product tech pack sketch (front, interior, side views with all compartment labels)</li>
+    <li>Written photography direction (surfaces, lighting, settings, what to never shoot)</li>
+    <li>Packaging concept description (tissue wrap, insert card, hang tag, glassine sleeve)</li>
+    <li>Website structure and UX direction (page architecture, copy tone, tech stack)</li>
+  </ul>
+
+  <div class="callout" style="margin-top:1.25rem;">"The strategy is done. We need a designer who can translate a well-defined world into a visual system — not someone who needs to build the brief from zero."</div>
+</div>
+
+<!-- 06 TERMS -->
+<div class="sec" id="s06">
+  <div class="eye">06 — Project Terms</div>
+  <div class="stitle">How this <em>engagement works</em></div>
+
+  <div class="important">
+    <div class="imp-eye">Non-negotiable requirements</div>
+    <div class="imp-title">Please only quote if you agree to all of the following:</div>
+    <ul class="imp-list">
+      <li>Revisions and collaboration are included — this is not a one-and-done engagement. We expect 2–3 rounds of revisions per deliverable, with open communication throughout.</li>
+      <li>You are available for feedback calls or async check-ins during the project window. Disappearing after kickoff is not acceptable.</li>
+      <li>All work is original. No stock illustration, no AI-generated imagery submitted as design work.</li>
+      <li>You deliver working, organized Figma files — not flattened exports only. We need to be able to edit templates ourselves after handoff.</li>
+      <li>You agree that all final approved assets transfer fully to us upon final payment. No licensing terms, no usage restrictions.</li>
+      <li>You will not use our brand, product, or identity work in your portfolio without explicit written permission from us.</li>
+    </ul>
+  </div>
+
+  <table class="terms" style="margin-top:1.25rem;">
+    <tr><td>Timeline</td><td>1–2 weeks from project kickoff. If you cannot meet this, please state your realistic timeline in your quote.</td></tr>
+    <tr><td>Collaboration style</td><td>We are highly involved. We will give clear, specific feedback. We expect the same in return. This works best as a conversation, not a handoff.</td></tr>
+    <tr><td>Communication</td><td>Email or voice note preferred. We are available for short calls at key milestones — kickoff, midpoint review, final approval.</td></tr>
+    <tr><td>Revisions</td><td>2–3 rounds included per deliverable. Rounds beyond that are quoted separately.</td></tr>
+    <tr><td>Payments</td><td>50% upfront to begin, 50% on final delivery and approval. Payment via bank transfer or PayPal.</td></tr>
+    <tr><td>Working files</td><td>Figma preferred. All layers named, organized, and editable. Exports provided as PNG (transparent background) and SVG for all logo variants.</td></tr>
+    <tr><td>Name TBD</td><td>The brand name is not yet finalized. Logo concepts begin with a placeholder. Once the name is confirmed, one round of wordmark finalization is included at no additional cost.</td></tr>
+    <tr><td>Digital only</td><td>All deliverables are digital. Print-ready files, physical samples, and production-ready packaging artwork are not in scope for this engagement.</td></tr>
+  </table>
+</div>
+
+<!-- 07 HOW TO QUOTE -->
+<div class="sec" id="s07">
+  <div class="eye">07 — How to Submit Your Quote</div>
+  <div class="stitle">What we need <em>from you</em></div>
+  <div class="sbody">To be considered, please send us the following. We will review all quotes and follow up within 48 hours.</div>
+
+  <ul class="blist" style="margin-top:1rem;">
+    <li>Your quote — broken down by deliverable where possible (logo, identity system, packaging, social templates, web mockups, photography brief, optional tech illustration)</li>
+    <li>2–3 examples of past brand identity work most relevant to this project — links to portfolio or PDF</li>
+    <li>Your realistic timeline given the 1–2 week requirement</li>
+    <li>A short note (3–5 sentences) on how you approach collaboration and revision rounds</li>
+    <li>Confirmation that you have read and agree to the terms in Section 06</li>
+  </ul>
+
+  <div class="callout bay" style="margin-top:1.25rem;">"We are not looking for the cheapest quote. We are looking for the right designer — someone who connects with this brand, can move at pace, and communicates openly. Show us that in your note."</div>
+
+  <div class="sbody" style="margin-top:1.25rem;">Send quotes and portfolio to: <strong style="font-weight:500;color:var(--ink)">hello@thepouch.co</strong><br>Subject line: <strong style="font-weight:500;color:var(--ink)">Designer Quote — The Pouch</strong></div>
+
+  <div class="sbody" style="margin-top:.75rem;">We will share the full written business brief, Pinterest board, existing sketches, and brand direction document with shortlisted designers before any work begins.</div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="cl-q">Thank you for your time and interest in this project.</div>
+  <div class="cl-s" style="color:rgba(253,252,248,.5);font-size:.82rem;margin-bottom:.35rem;">This brief is confidential. Please do not share without permission.</div>
+  <div class="cl-s">hello@thepouch.co · April 2026</div>
+</div>
+
+</div>
+</body>
+</html>
