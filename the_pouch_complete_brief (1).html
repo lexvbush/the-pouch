@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pouch — Business Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bay:#3A8C8A;--bay-l:#6BB8B5;--bay-p:#E0F2F1;
+  --moss:#3D5E3A;--moss-l:#7A9E6E;--moss-p:#EBF2E6;
+  --terra:#C4673A;--terra-p:#FAF0E8;
+  --stone:#B8A882;--stone-p:#F7F4ED;
+  --lav:#7B7BAF;--lav-p:#EEEEF8;
+  --gold:#E8C97A;--gold-p:#FBF6E8;
+  --ink:#1C2421;--ink-s:#3A4A44;
+  --cream:#FDFCF8;--warm:#F9F6EE;
+  --border:#E0DAC8;
+}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);font-weight:300;line-height:1.7;font-size:15px;}
+.wrap{max-width:860px;margin:0 auto;padding-bottom:0;}
+
+/* COVER */
+.cover{background:var(--moss);padding:4rem 2.5rem 3.5rem;text-align:center;}
+.c-eye{font-size:9px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--bay-l);margin-bottom:1.25rem;}
+.c-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:400;color:var(--cream);line-height:1;margin-bottom:.3rem;}
+.c-title em{font-style:italic;color:var(--bay-l);}
+.c-tag{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:rgba(253,252,248,.5);margin-bottom:1.5rem;}
+.c-mission{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:var(--bay-l);margin-bottom:1.75rem;}
+.c-meta{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(253,252,248,.3);}
+
+/* NAV */
+.nav{background:var(--warm);border-bottom:1px solid var(--border);padding:.6rem 1.5rem;display:flex;gap:.15rem;flex-wrap:wrap;align-items:center;position:sticky;top:0;z-index:100;}
+.nav-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-right:.5rem;}
+.nav-a{font-size:10.5px;color:var(--ink-s);text-decoration:none;padding:3px 9px;border-radius:10px;cursor:pointer;white-space:nowrap;transition:background .12s;}
+.nav-a:hover{background:var(--border);}
+
+/* SECTIONS */
+.sec{padding:3rem 2.5rem 2rem;}
+.sec+.sec{border-top:1px solid var(--border);}
+.eye{font-size:9px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:.5rem;}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:400;color:var(--ink);line-height:1.15;margin-bottom:1.1rem;}
+.stitle em{font-style:italic;color:var(--moss);}
+.sbody{font-size:.88rem;line-height:1.9;color:var(--ink-s);max-width:660px;}
+.sbody+.sbody{margin-top:.85rem;}
+
+.callout{background:var(--moss-p);border-left:3px solid var(--moss);border-radius:0 8px 8px 0;padding:1rem 1.3rem;margin:1.4rem 0;font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:var(--moss);line-height:1.5;}
+.callout.bay{background:var(--bay-p);border-left-color:var(--bay);color:var(--bay);}
+.callout.terra{background:var(--terra-p);border-left-color:var(--terra);color:var(--terra);}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.75rem;margin-top:1.1rem;}
+.card{background:var(--warm);border:0.5px solid var(--border);border-radius:11px;padding:1rem;}
+.c-lbl{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--bay);margin-bottom:.35rem;}
+.c-body{font-size:.8rem;color:var(--ink-s);line-height:1.65;}
+
+.h2{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--moss);margin:1.5rem 0 .6rem;}
+.blist{padding-left:0;list-style:none;}
+.blist li{font-size:.86rem;color:var(--ink-s);line-height:1.75;padding-left:1.1rem;position:relative;}
+.blist li::before{content:'—';position:absolute;left:0;color:var(--stone);}
+
+/* MISSION BANNER */
+.mission{background:var(--moss);border-radius:12px;padding:1.5rem 2rem;margin:1.5rem 0;text-align:center;}
+.mission-q{font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:var(--cream);margin-bottom:.35rem;line-height:1.35;}
+.mission-s{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bay-l);}
+
+/* INTERIOR DIAGRAM */
+.diagram{background:var(--warm);border:0.5px solid var(--border);border-radius:14px;padding:1.5rem;margin-top:1.1rem;}
+.d-lbl{font-size:.7rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--stone);margin-bottom:1.1rem;}
+.pouch{background:#E8E0D4;border-radius:24px;padding:1.1rem;border:1.5px solid #C8BEA8;max-width:500px;margin:0 auto;}
+.p-label{text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:.8rem;color:#8A7A68;margin-bottom:.875rem;}
+.zip{height:3px;border-radius:2px;background:var(--bay);margin-bottom:.3rem;}
+.zip-l{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-align:center;margin-bottom:.75rem;}
+.comp-row{display:flex;gap:.5rem;margin-bottom:.5rem;}
+.comp{border-radius:8px;padding:.65rem .75rem;flex:1;}
+.comp-n{font-size:.68rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.18rem;}
+.comp-d{font-size:.68rem;line-height:1.4;}
+.comp-tag{display:inline-block;font-size:.57rem;letter-spacing:.07em;text-transform:uppercase;border-radius:8px;padding:2px 6px;margin-top:.3rem;font-weight:500;}
+
+/* PALETTE */
+.palette{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.1rem;}
+.sw{display:flex;flex-direction:column;gap:5px;align-items:center;}
+.sw-c{width:54px;height:54px;border-radius:9px;}
+.sw-n{font-size:.62rem;color:var(--ink-s);text-align:center;line-height:1.25;max-width:54px;}
+.sw-h{font-size:.57rem;color:var(--stone);font-family:monospace;text-align:center;}
+
+/* COLORWAYS */
+.colorways{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.1rem;}
+.cw{border-radius:12px;overflow:hidden;border:0.5px solid var(--border);}
+.cw-swatch{height:100px;display:flex;align-items:flex-end;padding:.875rem;}
+.cw-info{background:var(--warm);padding:.875rem;}
+.cw-name{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;margin-bottom:.2rem;}
+.cw-desc{font-size:.78rem;color:var(--ink-s);line-height:1.55;}
+
+/* ESSENTIALS GRID */
+.ess{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.5rem;margin-top:1rem;}
+.ess-item{background:var(--warm);border:0.5px solid var(--border);border-radius:8px;padding:.6rem .75rem;display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--ink-s);}
+.ess-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+/* USE CASES */
+.use{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1rem;}
+.use-card{border-radius:10px;padding:.875rem;text-align:center;}
+.use-t{font-size:.8rem;font-weight:500;color:var(--ink);margin:.5rem 0 .25rem;}
+.use-d{font-size:.75rem;color:var(--ink-s);line-height:1.5;}
+
+/* PRICING TABLE */
+.price-t{width:100%;border-collapse:collapse;margin-top:1.1rem;font-size:.82rem;}
+.price-t th{text-align:left;padding:.5rem .75rem;font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);border-bottom:1px solid var(--border);}
+.price-t td{padding:.65rem .75rem;border-bottom:0.5px solid var(--border);color:var(--ink-s);vertical-align:top;}
+.price-t td:first-child{font-weight:400;color:var(--ink);}
+.price-t tr.hi td{background:var(--terra-p);}
+.price-tag{color:var(--terra);font-weight:500;font-size:.9rem;}
+
+/* TIMELINE */
+.tl{margin-top:1.1rem;padding-left:.875rem;border-left:1.5px solid var(--border);}
+.tl-item{padding:.65rem 0 .65rem 1.25rem;position:relative;}
+.tl-item::before{content:'';position:absolute;left:-4.75px;top:1rem;width:7px;height:7px;border-radius:50%;background:var(--bay-l);}
+.tl-phase{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:.15rem;}
+.tl-title{font-size:.86rem;font-weight:500;color:var(--ink);margin-bottom:.15rem;}
+.tl-body{font-size:.78rem;color:var(--ink-s);line-height:1.6;}
+
+/* VOICE TABLE */
+.vt{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.82rem;}
+.vt th{padding:.5rem .75rem;font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);border-bottom:1px solid var(--border);text-align:left;}
+.vt td{padding:.6rem .75rem;border-bottom:0.5px solid var(--border);color:var(--ink-s);vertical-align:top;line-height:1.55;}
+.vt td:first-child{color:var(--moss);font-family:'Playfair Display',serif;font-style:italic;}
+
+/* HUMANITARIAN */
+.hum{display:flex;flex-direction:column;gap:.75rem;margin-top:1rem;}
+.hum-card{background:var(--moss-p);border:0.5px solid var(--moss-l);border-radius:11px;padding:1rem 1.1rem;display:flex;gap:1rem;align-items:flex-start;}
+.hum-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--moss-l);line-height:1;flex-shrink:0;width:2rem;text-align:center;}
+.hum-t{font-size:.8rem;font-weight:500;color:var(--moss);margin-bottom:.25rem;}
+.hum-d{font-size:.78rem;color:var(--ink-s);line-height:1.6;}
+
+/* CLOSING */
+.closing{background:var(--moss);padding:3.5rem 2.5rem;text-align:center;}
+.cl-q{font-family:'Playfair Display',serif;font-style:italic;font-size:1.65rem;color:var(--cream);margin-bottom:.5rem;line-height:1.3;}
+.cl-e{font-size:.88rem;color:var(--bay-l);margin-bottom:.35rem;}
+.cl-s{font-size:.72rem;color:rgba(253,252,248,.35);letter-spacing:.1em;}
+
+@media(max-width:560px){
+  .use{grid-template-columns:1fr 1fr;}
+  .colorways{grid-template-columns:1fr;}
+  .comp-row{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="c-eye">Business Brief · Confidential · April 2026</div>
+  <div class="c-title">The <em>Pouch</em></div>
+  <div class="c-tag">a woman's essentials, finally organized</div>
+  <div class="c-mission">"Carry your woman with you."</div>
+  <div class="c-meta">Product Design · Brand Identity · Social · Web · Sales · Pricing · Production · Mission</div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <span class="nav-lbl">jump to</span>
+  <a class="nav-a" href="#s01">01 Purpose</a>
+  <a class="nav-a" href="#s02">02 Product</a>
+  <a class="nav-a" href="#s03">03 Brand</a>
+  <a class="nav-a" href="#s04">04 Social</a>
+  <a class="nav-a" href="#s05">05 Imagery</a>
+  <a class="nav-a" href="#s06">06 Web</a>
+  <a class="nav-a" href="#s07">07 Sales</a>
+  <a class="nav-a" href="#s08">08 Pricing</a>
+  <a class="nav-a" href="#s09">09 Production</a>
+  <a class="nav-a" href="#s10">10 Mission</a>
+</div>
+
+<!-- 01 PURPOSE -->
+<div class="sec" id="s01">
+  <div class="eye">01 — Purpose & Mission</div>
+  <div class="stitle">Built to create a more <em>functional existence for women</em></div>
+  <div class="sbody">The Pouch is a small, soft, shapeless carry object engineered specifically for women. Not a bag. Not a wallet. Not a clutch. Something entirely new — a single organized object that moves with her: from purse to jacket pocket to her hand, worn alone or tucked inside anything.</div>
+  <div class="sbody">Every woman knows the feeling: switching bags and losing twenty minutes. Reaching into a purse for a lipstick and finding everything except it. Wearing an outfit with no pockets and having nowhere to put the three things that matter. The Pouch solves all of it in one object.</div>
+  <div class="mission">
+    <div class="mission-q">"Carry your woman with you."</div>
+    <div class="mission-s">The Pouch · Product & Brand Mission</div>
+  </div>
+  <ul class="blist">
+    <li><strong style="font-weight:500;color:var(--ink)">Mission:</strong> To create a more functional existence for women through one beautifully designed, highly organized carry object.</li>
+    <li><strong style="font-weight:500;color:var(--ink)">Vision:</strong> A world where women move through their day without friction — where everything they need is always exactly where they left it.</li>
+    <li><strong style="font-weight:500;color:var(--ink)">Values:</strong> Function first. Craft that shows. Designed by and for women. Beautiful without being precious.</li>
+  </ul>
+</div>
+
+<!-- 02 PRODUCT -->
+<div class="sec" id="s02">
+  <div class="eye">02 — Product Design</div>
+  <div class="stitle">Soft outside. <em>Engineered inside.</em></div>
+  <div class="sbody">The Pouch is intentionally shapeless on the exterior — soft, velvet-touch, compressible. But open it and everything has a home. Five dedicated interior zones, each designed for a specific essential a woman actually carries. The contrast between its formless exterior and its precisely organized interior is the product's defining character.</div>
+
+  <div class="h2">Interior architecture</div>
+  <div class="diagram">
+    <div class="d-lbl">Interior layout — schematic view</div>
+    <div class="pouch">
+      <div class="p-label">the pouch — open</div>
+      <div class="zip"></div>
+      <div class="zip-l">— main zipper closure (YKK) —</div>
+      <div class="comp-row">
+        <div class="comp" style="background:var(--bay-p);border:0.5px solid var(--bay-l);flex:1.2;">
+          <div class="comp-n" style="color:var(--bay);">Lipstick holders</div>
+          <div class="comp-d" style="color:#2A6A68;">Two upright elastic loops. Holds standard + mini lipstick or chapstick. Never rolling loose.</div>
+          <div class="comp-tag" style="background:var(--bay-p);color:var(--bay);border:0.5px solid var(--bay-l);">elastic · 2 slots</div>
+        </div>
+        <div class="comp" style="background:var(--lav-p);border:0.5px solid #B0B0D0;">
+          <div class="comp-n" style="color:var(--lav);">Jewelry vault</div>
+          <div class="comp-d" style="color:#5A5A8A;">Sealed inner zip. Microfiber suede lining. Holds multiple pieces — earrings, rings, chains. No scratching.</div>
+          <div class="comp-tag" style="background:var(--lav-p);color:var(--lav);border:0.5px solid #B0B0D0;">zipper sealed · lined</div>
+        </div>
+      </div>
+      <div class="comp-row">
+        <div class="comp" style="background:var(--moss-p);border:0.5px solid var(--moss-l);flex:1.4;">
+          <div class="comp-n" style="color:var(--moss);">Card slide</div>
+          <div class="comp-d" style="color:#2A4A28;">Flat stiff-backed slip pocket. 2–4 cards: business cards, debit, ID. Clean slide in and out.</div>
+          <div class="comp-tag" style="background:var(--moss-p);color:var(--moss);border:0.5px solid var(--moss-l);">slip · stiff-back · 2–4 cards</div>
+        </div>
+        <div class="comp" style="background:var(--gold-p);border:0.5px solid #D8BC60;">
+          <div class="comp-n" style="color:#8A6A18;">Quick-access</div>
+          <div class="comp-d" style="color:#6A5218;">AirPod case, small keys, hair ties, mints. No zipper. Reach in and go.</div>
+          <div class="comp-tag" style="background:var(--gold-p);color:#8A6A18;border:0.5px solid #D8BC60;">open · no zipper</div>
+        </div>
+      </div>
+      <div class="comp-row">
+        <div class="comp" style="background:var(--terra-p);border:0.5px solid #E0A880;">
+          <div class="comp-n" style="color:var(--terra);">Main sealed body</div>
+          <div class="comp-d" style="color:#8A3A18;">Outer shell. Zips fully closed. Shape-adaptive — compresses flat under 0.75" empty, expands to ~4.5" × 3.5" × 1.5" full.</div>
+          <div class="comp-tag" style="background:var(--terra-p);color:var(--terra);border:0.5px solid #E0A880;">YKK zipper · shape-adaptive</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h2">What it holds</div>
+  <div class="ess">
+    <div class="ess-item"><div class="ess-dot" style="background:var(--bay)"></div>Lipstick</div>
+    <div class="ess-item"><div class="ess-dot" style="background:var(--bay)"></div>Chapstick</div>
+    <div class="ess-item"><div class="ess-dot" style="background:var(--moss)"></div>Business cards</div>
+    <div class="ess-item"><div class="ess-dot" style="background:var(--moss)"></div>Debit / ID card</div>
+    <div class="ess-item"><div class="ess-dot" style="background:var(--lav)"></div>Earrings</div>
+    <div class="ess-item"><div class="ess-dot" style="background:var(--lav)"></div>Ring / necklace</div>
+    <div class="ess-item"><div class="ess-dot" style="background:var(--gold)"></div>AirPod case</div>
+    <div class="ess-item"><div class="ess-dot" style="background:var(--gold)"></div>Small car keys</div>
+    <div class="ess-item"><div class="ess-dot" style="background:var(--terra)"></div>Hair ties</div>
+    <div class="ess-item"><div class="ess-dot" style="background:var(--terra)"></div>Mints</div>
+  </div>
+  <div class="callout bay" style="margin-top:1.25rem;">"That's it. The Pouch holds exactly what a woman reaches for — and nothing that slows her down."</div>
+
+  <div class="h2">Materials & construction</div>
+  <div class="cards">
+    <div class="card"><div class="c-lbl">Exterior</div><div class="c-body">Velvet-touch soft fabric. Rich, durable, tactile. Not quilted nylon — the feel is closer to high-grade micro-velvet. Feels considered, not sporty.</div></div>
+    <div class="card"><div class="c-lbl">Interior lining</div><div class="c-body">Structured microfiber holds compartment shape. Jewelry vault in suede-touch lining — protects delicate pieces from scratching and tangling.</div></div>
+    <div class="card"><div class="c-lbl">Closures</div><div class="c-body">YKK smooth-pull main zipper. Secondary YKK zipper on jewelry vault. Card slide is open-top with stiff-back panel for clean card access.</div></div>
+    <div class="card"><div class="c-lbl">Weight & size</div><div class="c-body">Under 3oz empty. Compresses flat under 0.75". Expands to ~4.5" × 3.5" × 1.5" full. Fits any pocket without bulk or bulge.</div></div>
+  </div>
+
+  <div class="h2">Launch colorways — two monochrome</div>
+  <div class="colorways">
+    <div class="cw">
+      <div class="cw-swatch" style="background:#1C2421;">
+        <span style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,.7);font-size:.85rem;">Deep Ink</span>
+      </div>
+      <div class="cw-info">
+        <div class="cw-name" style="color:var(--ink);">Deep Ink</div>
+        <div class="cw-desc">Near-black with a forest undertone. Exterior, zipper pulls, and interior lining all within the same deep family. The velvet texture is the entire statement. Shot in warm, low evening light.</div>
+      </div>
+    </div>
+    <div class="cw">
+      <div class="cw-swatch" style="background:#F0EBE0;border-bottom:0.5px solid var(--border);">
+        <span style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(90,80,60,.7);font-size:.85rem;">Stone at Dawn</span>
+      </div>
+      <div class="cw-info">
+        <div class="cw-name" style="color:var(--ink);">Stone at Dawn</div>
+        <div class="cw-desc">A warm, pale off-white — cream with a stone undertone. Clean, fresh, quietly luxurious. Interior lining in tonal warm white. Shot in open midday light on marble or stone surfaces.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h2">How she carries it</div>
+  <div class="use">
+    <div class="use-card" style="background:var(--bay-p);border:0.5px solid var(--bay-l);">
+      <div class="use-t">In her purse</div>
+      <div class="use-d">When she switches bags, she grabs the Pouch. One move. Everything transfers. No digging, no chaos.</div>
+    </div>
+    <div class="use-card" style="background:var(--moss-p);border:0.5px solid var(--moss-l);">
+      <div class="use-t">Jacket / sweatpants pocket</div>
+      <div class="use-d">Compresses flat. Fits any pocket without bulge. Works with a blazer, a hoodie, a coat.</div>
+    </div>
+    <div class="use-card" style="background:var(--terra-p);border:0.5px solid #E0A880;">
+      <div class="use-t">On its own</div>
+      <div class="use-d">Dinner, an errand, a show. The Pouch alone has everything she needs to walk out the door.</div>
+    </div>
+    <div class="use-card" style="background:var(--lav-p);border:0.5px solid #B0B0D0;">
+      <div class="use-t">Travel</div>
+      <div class="use-d">Security tray, hotel bedside, airplane pocket. Everything together across every transit.</div>
+    </div>
+    <div class="use-card" style="background:var(--gold-p);border:0.5px solid #D8BC60;">
+      <div class="use-t">As a gift</div>
+      <div class="use-d">The most considered gift for a woman who has everything. Understands her life. Solves a real problem.</div>
+    </div>
+    <div class="use-card" style="background:var(--stone-p);border:0.5px solid var(--stone);">
+      <div class="use-t">Gym, studio, errands</div>
+      <div class="use-d">Slips into a gym bag or tote. Her essentials survive every version of her day.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 BRAND -->
+<div class="sec" id="s03">
+  <div class="eye">03 — Brand Design</div>
+  <div class="stitle">A brand as <em>alive as the women who carry it</em></div>
+  <div class="sbody">The Pouch brand is drawn from a visual world of painterly lushness — Mediterranean coastlines, Ghibli-esque rice fields, Chinese ink-wash mountains, overgrown canal cities, tropical interiors alive with plants. Warm, specific, and deeply visual. A brand a woman recognizes immediately as made for her.</div>
+
+  <div class="h2">Color palette — drawn from the visual world</div>
+  <div class="palette">
+    <div class="sw"><div class="sw-c" style="background:#3A8C8A;"></div><div class="sw-n">Tidal bay</div><div class="sw-h">#3A8C8A</div></div>
+    <div class="sw"><div class="sw-c" style="background:#6BB8B5;"></div><div class="sw-n">Shallow water</div><div class="sw-h">#6BB8B5</div></div>
+    <div class="sw"><div class="sw-c" style="background:#3D5E3A;"></div><div class="sw-n">Forest canopy</div><div class="sw-h">#3D5E3A</div></div>
+    <div class="sw"><div class="sw-c" style="background:#7A9E6E;"></div><div class="sw-n">Tea field</div><div class="sw-h">#7A9E6E</div></div>
+    <div class="sw"><div class="sw-c" style="background:#C4673A;"></div><div class="sw-n">Terracotta</div><div class="sw-h">#C4673A</div></div>
+    <div class="sw"><div class="sw-c" style="background:#B8A882;"></div><div class="sw-n">Weathered stone</div><div class="sw-h">#B8A882</div></div>
+    <div class="sw"><div class="sw-c" style="background:#7B7BAF;"></div><div class="sw-n">Mountain mist</div><div class="sw-h">#7B7BAF</div></div>
+    <div class="sw"><div class="sw-c" style="background:#E8C97A;"></div><div class="sw-n">Afternoon gold</div><div class="sw-h">#E8C97A</div></div>
+    <div class="sw"><div class="sw-c" style="background:#F7F4ED;border:0.5px solid var(--border);"></div><div class="sw-n">Paper white</div><div class="sw-h">#F7F4ED</div></div>
+    <div class="sw"><div class="sw-c" style="background:#1C2421;"></div><div class="sw-n">Deep ink</div><div class="sw-h">#1C2421</div></div>
+  </div>
+
+  <div class="h2">Typography</div>
+  <div class="cards">
+    <div class="card">
+      <div class="c-lbl">Display — Playfair Display</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-style:italic;color:var(--moss);line-height:1.1;margin:.4rem 0 .3rem;">The Pouch</div>
+      <div class="c-body">Headlines, brand mark, taglines, pull-quotes. Italic is the signature. Signals craft and femininity without being delicate.</div>
+    </div>
+    <div class="card">
+      <div class="c-lbl">Body — Jost Light (300)</div>
+      <div style="font-family:'Jost',sans-serif;font-size:.88rem;font-weight:300;color:var(--ink-s);line-height:1.8;margin:.4rem 0 .3rem;">The organized carry object for women who move. Every compartment has a reason.</div>
+      <div class="c-body">Product copy, web, captions, packaging text. Modern and warm. Never tech or corporate.</div>
+    </div>
+  </div>
+
+  <div class="h2">Brand voice</div>
+  <table class="vt">
+    <thead><tr><th>The line</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td>"Carry your woman with you."</td><td>The mission in four words. Identity, not just function. The emotional anchor of everything.</td></tr>
+      <tr><td>"Everything you need for wherever today takes you."</td><td>Speaks to her life in motion. Every version of her day is covered.</td></tr>
+      <tr><td>"The pouch you reach for without thinking."</td><td>Habit-forming product. It earns its place in her routine.</td></tr>
+      <tr><td>"Soft as the day you bought it. Better by the year."</td><td>Durability as a brand value. An heirloom object, not a disposable one.</td></tr>
+      <tr><td>"One move. Everything transfers."</td><td>The purse-switch moment. Instantly relatable. No explanation needed.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="h2">Packaging</div>
+  <div class="cards">
+    <div class="card"><div class="c-lbl">Tissue wrap</div><div class="c-body">Botanical-illustrated tissue paper featuring an original commissioned scene, rotating annually. A different bay, a different garden. People keep it.</div></div>
+    <div class="card"><div class="c-lbl">Insert card</div><div class="c-body">Postcard format. One illustrated scene, one line on the back. "Somewhere between Positano and a good idea." Signed with the season.</div></div>
+    <div class="card"><div class="c-lbl">Logo</div><div class="c-body">"the pouch" in Playfair italic lowercase. Secondary: a hand-drawn botanical sprig in a circle — blind-embossed on the velvet exterior, wax-stamped on packaging.</div></div>
+    <div class="card"><div class="c-lbl">Colorway names</div><div class="c-body">"Deep Ink" and "Stone at Dawn." Named like a place, not a product code. On the tag, in the listing, in all copy.</div></div>
+  </div>
+</div>
+
+<!-- 04 SOCIAL -->
+<div class="sec" id="s04">
+  <div class="eye">04 — Social Messaging & Campaigns</div>
+  <div class="stitle">Content that speaks <em>directly to her</em></div>
+  <div class="sbody">Every piece of content either deepens the brand world or directly solves a problem women recognize in their own lives. Platforms: Instagram (primary), TikTok (discovery), Pinterest (evergreen). Post with intention. Never chase trends.</div>
+
+  <div class="h2">Four campaign pillars</div>
+  <div class="cards">
+    <div class="card"><div class="c-lbl">Campaign 01 — "The Switch"</div><div class="c-body">The bag-switch moment on TikTok/Reels. One move with the Pouch vs. the usual chaos. Zero dialogue needed. Universally understood. High share rate.</div></div>
+    <div class="card"><div class="c-lbl">Campaign 02 — "What's in yours?"</div><div class="c-body">UGC-driven. Community photos of Pouch contents, unposed. Reposted with first name and city. Builds social proof through honest specificity. Runs continuously.</div></div>
+    <div class="card"><div class="c-lbl">Campaign 03 — "Made for this"</div><div class="c-body">Short illustrated scenes of the Pouch in the brand world. A rooftop dinner. A stone terrace. A hotel room. World-building, not product advertising.</div></div>
+    <div class="card"><div class="c-lbl">Campaign 04 — "The five things"</div><div class="c-body">What are your five non-negotiables? Women tag their everyday five. The Pouch holds all of them.</div></div>
+  </div>
+
+  <div class="h2">Sample posts</div>
+  <div class="callout">"You already know what you need. The Pouch just keeps it together." — Instagram</div>
+  <div class="callout bay">"Switching bags used to take ten minutes. Now it takes one." — TikTok</div>
+  <div class="callout terra">"Sofia, Milan. Never leaves my jacket pocket." — UGC repost</div>
+</div>
+
+<!-- 05 IMAGERY -->
+<div class="sec" id="s05">
+  <div class="eye">05 — Product Imagery Direction</div>
+  <div class="stitle">Where The Pouch <em>lives</em></div>
+  <div class="sbody">Every image should feel like a still from a film set in the brand world. Warm, painted, alive. The Pouch is always the natural inhabitant of its setting — never placed artificially.</div>
+
+  <div class="h2">Hero shots</div>
+  <ul class="blist" style="margin-top:.5rem;">
+    <li>The Pouch on a stone ledge above a turquoise bay. Morning light. A book or worn map beside it.</li>
+    <li>Open on a linen-covered table in a Mediterranean room. Botanical wallpaper behind. Contents visible — three items only.</li>
+    <li>In a woman's hand, mid-motion on a cobblestone street. Soft focus behind. Velvet catches afternoon light.</li>
+    <li>Flat lay on aged paper, pressed botanicals, or an illustrated map. Texture on texture.</li>
+    <li>Tucked into a jacket breast pocket, barely visible above the edge. The whole story in one frame.</li>
+  </ul>
+
+  <div class="h2">By colorway</div>
+  <div class="cards">
+    <div class="card"><div class="c-lbl">Deep Ink</div><div class="c-body">Lower, warmer light. Evening or golden hour. The deep velvet absorbs and reflects simultaneously. Surfaces: aged wood, dark marble, worn leather.</div></div>
+    <div class="card"><div class="c-lbl">Stone at Dawn</div><div class="c-body">Midday, open air, dappled shade. The pale velvet feels cool and fresh. Surfaces: white stone, cool marble, salt-bleached wood.</div></div>
+  </div>
+
+  <div class="h2">What we never shoot</div>
+  <ul class="blist" style="margin-top:.5rem;">
+    <li>White seamless or flat-lay on white background.</li>
+    <li>Generic hands holding a product with no setting context.</li>
+    <li>Stock lifestyle imagery that could belong to any brand.</li>
+    <li>Perfectly staged scenes that look designed — it should always look found.</li>
+  </ul>
+</div>
+
+<!-- 06 WEB -->
+<div class="sec" id="s06">
+  <div class="eye">06 — Web Design Direction</div>
+  <div class="stitle">A site that <em>breathes</em></div>
+  <div class="sbody">The website feels like walking into a room where one object is made very well — and the room itself is beautiful. Sparse text. Large, warm imagery. No popups, no countdown timers, no upsell carousels.</div>
+
+  <div class="h2">Page architecture</div>
+  <div class="cards">
+    <div class="card"><div class="c-lbl">Homepage</div><div class="c-body">Full-bleed hero image — the Pouch in the world. One-line Playfair italic headline. Single CTA: "Shop the Pouch." No announcement bar. Scroll begins the story.</div></div>
+    <div class="card"><div class="c-lbl">Product page</div><div class="c-body">4–5 images per colorway. Colorway selector. Monogram add-on toggle. Collapsible: What's inside, Materials, Dimensions, Care, Shipping.</div></div>
+    <div class="card"><div class="c-lbl">Our Why</div><div class="c-body">Long-form essay on why this exists and for whom. Not bullet points — a piece of writing worth reading. The mission lives here.</div></div>
+    <div class="card"><div class="c-lbl">The Journal</div><div class="c-body">Occasional editorial posts — illustrated scenes, carry profiles, maker stories. Irregular cadence, high quality.</div></div>
+  </div>
+
+  <div class="h2">UX & tech</div>
+  <ul class="blist" style="margin-top:.5rem;">
+    <li>Maximum 2-click checkout. No account required to purchase.</li>
+    <li>Cart as a drawer, not a page. Mobile-first layout throughout.</li>
+    <li>Page speed as a brand value — Lighthouse target: 90+.</li>
+    <li>Shopify + custom theme. Klaviyo for email. Gorgias for support.</li>
+    <li>Email: under 4 sends per month. Open rate target: 48%+.</li>
+  </ul>
+</div>
+
+<!-- 07 SALES -->
+<div class="sec" id="s07">
+  <div class="eye">07 — Sales Method</div>
+  <div class="stitle">Direct, deliberate, <em>distributed</em></div>
+  <div class="sbody">The Pouch sells primarily direct-to-consumer, with a curated wholesale strategy for partners who share the brand's world. We build depth, not volume. Amazon is not a channel for The Pouch.</div>
+
+  <div class="h2">Sales channels</div>
+  <div class="cards">
+    <div class="card"><div class="c-lbl">DTC — primary</div><div class="c-body">thepouch.com. Own the relationship. Full margin. Email list as core asset. Limited-quantity drops for new colorways — announced 72 hours in advance.</div></div>
+    <div class="card"><div class="c-lbl">Wholesale — curated</div><div class="c-body">Max 30 partners globally. Independent boutiques, apothecaries, hotel gift shops, concept stores. Selected for brand alignment. Min order: 12 units.</div></div>
+    <div class="card"><div class="c-lbl">Pop-ups & markets</div><div class="c-body">Quarterly in key cities. Designed as brand experiences. A cloth-covered table, both colorways, a botanical prop. Sells out. Creates community.</div></div>
+    <div class="card"><div class="c-lbl">Corporate gifting</div><div class="c-body">Min 24 units. Custom emboss. White-glove onboarding. Target: law firms, creative agencies, boutique hotels. Margin-positive.</div></div>
+    <div class="card"><div class="c-lbl">Gift market</div><div class="c-body">The most considered gift for a woman. Mother's Day, birthdays, holiday. Campaign calendar aligned to gifting moments.</div></div>
+  </div>
+</div>
+
+<!-- 08 PRICING -->
+<div class="sec" id="s08">
+  <div class="eye">08 — Price Points</div>
+  <div class="stitle">Accessible quality. <em>Real value.</em></div>
+  <div class="sbody">Retail range $30–$55. A product a woman buys for herself or receives as a genuinely considered gift. The price reflects material quality and construction without being exclusionary.</div>
+
+  <table class="price-t" style="margin-top:1.25rem;">
+    <thead>
+      <tr><th>Variant</th><th>Material</th><th>Retail DTC</th><th>Wholesale</th><th>COGS est.</th><th>Margin</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>The Pouch — Classic</td><td>Micro-velvet</td><td><span class="price-tag">$38</span></td><td>$19</td><td>$9</td><td>76%</td></tr>
+      <tr class="hi"><td>The Pouch — Signature ★</td><td>Premium velvet</td><td><span class="price-tag">$52</span></td><td>$26</td><td>$13</td><td>75%</td></tr>
+      <tr><td>The Pouch — Monogram</td><td>Premium velvet + emboss</td><td><span class="price-tag">$62</span></td><td>—</td><td>$16</td><td>74%</td></tr>
+      <tr><td>Corporate gift</td><td>Velvet, custom</td><td>—</td><td>$28–$38</td><td>$13–$16</td><td>57%+</td></tr>
+    </tbody>
+  </table>
+  <div class="sbody" style="margin-top:.75rem;font-size:.8rem;font-style:italic;color:var(--stone);">★ Signature is the hero SKU at launch. Both colorways available in both SKUs. Monogram is DTC-only.</div>
+</div>
+
+<!-- 09 PRODUCTION -->
+<div class="sec" id="s09">
+  <div class="eye">09 — Production Methods</div>
+  <div class="stitle">Made with care. <em>Built to last.</em></div>
+  <div class="sbody">The velvet construction requires a specialist. The feel of the exterior is the first thing a woman touches — we do not compromise on it. Production is a direct expression of the brand.</div>
+
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-phase">Phase 1 — Launch (months 1–6)</div>
+      <div class="tl-title">Small-batch, quality-first production</div>
+      <div class="tl-body">300–500 units per colorway per SKU. Single vetted workshop with soft-goods velvet expertise. Full quality oversight. Failure rate target: under 2%.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-phase">Phase 2 — Scale (year 1–2)</div>
+      <div class="tl-title">Certified ethical manufacturer</div>
+      <div class="tl-body">Transition to BSCI/SA8000-certified manufacturer with proven velvet expertise — Portugal, Turkey, or South Korea. Reduce COGS by 25–35% while maintaining standards.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-phase">Phase 3 — Maturity</div>
+      <div class="tl-title">Sustainability & transparency</div>
+      <div class="tl-body">Full supply chain transparency on website. Explore OEKO-TEX certified or recycled-fiber velvet. Repair program: free for Signature tier, small fee for Classic.</div>
+    </div>
+  </div>
+
+  <div class="h2">Fulfillment</div>
+  <ul class="blist" style="margin-top:.5rem;">
+    <li>In-house for first 12 months — packaging assembly is too important to outsource.</li>
+    <li>Transition to 3PL (ShipBob or Shipmonk) at 400+ monthly orders.</li>
+    <li>Botanical-illustrated tissue, glassine sleeve, postcard insert, kraft mailer.</li>
+  </ul>
+</div>
+
+<!-- 10 HUMANITARIAN -->
+<div class="sec" id="s10">
+  <div class="eye">10 — Humanitarian Efforts & Brand Mission</div>
+  <div class="stitle">The work <em>beyond the product</em></div>
+  <div class="sbody">The Pouch's mission — a more functional existence for women — extends beyond the product. Our humanitarian commitments focus on economic empowerment, skill-building, and opportunity for women. Built in from day one.</div>
+
+  <div class="hum">
+    <div class="hum-card">
+      <div class="hum-n">01</div>
+      <div><div class="hum-t">Vocational training partnership</div><div class="hum-d">For every 50 Pouches sold, The Pouch funds one day of soft-goods vocational training for women re-entering the workforce, displaced individuals, or formerly incarcerated women. Year one target: 300 training days funded.</div></div>
+    </div>
+    <div class="hum-card">
+      <div class="hum-n">02</div>
+      <div><div class="hum-t">The Maker Fellowship</div><div class="hum-d">Annual program supporting 2–3 emerging women artisans from underrepresented backgrounds with $5,000 in materials, mentorship, and a limited production run. Fellows design a seasonal limited-edition variant. Full credit and compensation.</div></div>
+    </div>
+    <div class="hum-card">
+      <div class="hum-n">03</div>
+      <div><div class="hum-t">1% for women's economic programs</div><div class="hum-d">1% of annual revenue pledged to organizations focused on women's economic empowerment globally. Selection criteria and annual allocation published transparently on the website.</div></div>
+    </div>
+    <div class="hum-card">
+      <div class="hum-n">04</div>
+      <div><div class="hum-t">Circular return program</div><div class="hum-d">Customers return worn Pouches for a $10–$15 credit toward a new one. Returned Pouches are repaired and donated to vocational programs or resold at a reduced price.</div></div>
+    </div>
+  </div>
+  <div class="callout" style="margin-top:1.5rem;">"We are not a charity. We are a business built around women — which means our responsibility to women doesn't end at the sale."</div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="cl-q">Let's make something women reach for.</div>
+  <div class="cl-e">thepouch.co · hello@thepouch.co</div>
+  <div class="cl-s">This brief is a living document · April 2026 · Version 1.0</div>
+</div>
+
+</div>
+</body>
+</html>
